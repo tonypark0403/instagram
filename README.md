@@ -4,6 +4,7 @@ Instagram clone with Prisma
 
 ## User Strories
 
+- [ ] Log in
 - [ ] Like / Unlike a photo
 - [ ] Comment on a photo
 - [ ] Search by user
@@ -12,8 +13,7 @@ Instagram clone with Prisma
 - [ ] Follow / Unfollow User
 - [ ] See the full photo
 - [ ] Edit my profile
-- [ ] Create account
-- [ ] Log in
+- [x] Create account
 - [ ] Upload a photo
 - [ ] Edit the photo (Delete)
 - [ ] See the feed

@@ -10,7 +10,7 @@
     "dev": "nodemon --exec babel-node src/server.js",
     "deploy": "prisma deploy",
     "generate": "prisma generate",
-    "prisma": "yarn run deploy && yarn run generate",
+    "prisma": "npm run deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
