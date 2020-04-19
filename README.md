@@ -5,7 +5,7 @@ Instagram clone with Prisma
 ## User Strories
 
 - [x] Create account
-- [ ] Requet Secret
+- [x] Requet Secret
 - [ ] Confirm Secret (Login)
 - [ ] Like / Unlike a photo
 - [ ] Comment on a photo
