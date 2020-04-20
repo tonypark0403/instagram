@@ -12,7 +12,7 @@ Instagram clone with Prisma
 - [x] Search by user
 - [x] Search by location
 - [x] Follow / Unfollow User
-- [ ] See user profile
+- [x] See user profile
 - [ ] See the full photo
 - [ ] Edit my profile
 - [ ] Upload a photo
