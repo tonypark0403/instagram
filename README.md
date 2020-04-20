@@ -13,8 +13,8 @@ Instagram clone with Prisma
 - [x] Search by location
 - [x] Follow / Unfollow User
 - [x] See user profile
-- [x] See the full photo
-- [ ] Edit my profile
-- [ ] Upload a photo
-- [ ] Edit the photo (Delete)
+- [x] Edit my profile
+- [x] See the full post
+- [ ] Upload a post
+- [ ] Edit the post (Delete)
 - [ ] See the feed
