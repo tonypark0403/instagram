@@ -7,7 +7,7 @@ Instagram clone with Prisma
 - [x] Create account
 - [x] Requet Secret
 - [x] Confirm Secret (Login)
-- [ ] Like / Unlike a photo
+- [x] Like / Unlike a photo
 - [ ] Comment on a photo
 - [ ] Search by user
 - [ ] Search by location
