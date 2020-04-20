@@ -6,6 +6,7 @@ import schema from "./schema";
 import "./env";
 import "./passport";
 import { authenticateJwt } from "./passport";
+import { isAuthenticated } from "./middlewares";
 
 const PORT = process.env.PORT || 4000;
 
@@ -13,7 +14,7 @@ const server = new GraphQLServer({
   schema,
   context: ({ request }) => {
     // console.log("server", request.user);
-    return { request };
+    return { request, isAuthenticated };
   },
 });
 server.express.use(logger("dev"));
