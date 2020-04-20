@@ -18,3 +18,6 @@ Instagram clone with Prisma
 - [ ] Upload a post
 - [ ] Edit the post (Delete)
 - [ ] See the feed
+- [ ] See rooms
+- [ ] Send private message
+- [ ] Receive message
