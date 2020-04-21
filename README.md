@@ -17,7 +17,7 @@ Instagram clone with Prisma
 - [x] See the full post
 - [x] Upload a post
 - [x] Edit the post (Delete)
-- [ ] See the feed
-- [ ] See rooms
-- [ ] Send private message
+- [x] See the feed
+- [x] See rooms
+- [x] Send private message
 - [ ] Receive message
