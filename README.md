@@ -21,3 +21,5 @@ Instagram clone with Prisma
 - [x] See rooms
 - [x] Send private message
 - [x] Receive message (Real-time)
+
+## Client
