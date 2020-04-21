@@ -20,4 +20,4 @@ Instagram clone with Prisma
 - [x] See the feed
 - [x] See rooms
 - [x] Send private message
-- [ ] Receive message
+- [x] Receive message (Real-time)
