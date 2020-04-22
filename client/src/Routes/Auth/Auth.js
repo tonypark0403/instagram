@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "react-apollo-hooks";
+import { toast } from "react-toastify";
 
 import useInput from "../../Hooks/useInput";
 import AuthPresenter from "./AuthPresenter";
@@ -11,15 +12,26 @@ export default () => {
   const username = useInput("");
   const firstName = useInput("");
   const lastName = useInput("");
-  const email = useInput("");
+  const email = useInput("test@test.com"); // for test
   const [requestSecret] = useMutation(LOG_IN, {
+    // update: (_, result) => console.log(result),
+    update: (_, { data }) => {
+      const { requestSecret } = data;
+      if (!requestSecret) {
+        // toast.error("Please sign up first...");
+        // setTimeout(() => setAction(Constants.SIGNUP), 3000);
+        toast.error("Please sign up first...", {
+          onClose: () => setAction(Constants.SIGNUP),
+          autoClose: 3000,
+        });
+      }
+    },
     variables: { email: email.value },
   });
   // console.log(username, firstName, lastName, email);
   const onLogin = (e) => {
     e.preventDefault();
     if (email.value !== "") {
-      console.log("requestSecret");
       requestSecret();
     }
   };
