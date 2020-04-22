@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import Constants from "../Common/Constants";
+import React from "react";
 import styled from "styled-components";
-import Input from "../Components/Input";
-import Button from "../Components/Button";
-import useInput from "../Hooks/useInput";
+import Constants from "../../Common/Constants";
+import Input from "../../Components/Input";
+import Button from "../../Components/Button";
 
 const Wrapper = styled.div`
   min-height: 80vh;
@@ -48,30 +47,29 @@ const Form = styled(Box)`
   }
 `;
 
-export default () => {
-  const [action, setAction] = useState(Constants.LOGIN);
-  const username = useInput("");
-  const password = useInput("");
-  const firstName = useInput("");
-  const lastName = useInput("");
-  const email = useInput("");
-  console.log(username, password, firstName, lastName, email);
+export default ({
+  setAction,
+  action,
+  username,
+  firstName,
+  lastName,
+  email,
+  onLogin,
+}) => {
   return (
     <Wrapper>
       <Form>
         {action === Constants.LOGIN ? (
-          <form>
-            <Input placeholder={"Username"} {...username} />
-            <Input placeholder={"Password"} {...password} type="password" />
+          <form onSubmit={onLogin}>
+            <Input placeholder={"Email"} {...email} type="email" />
             <Button text={"Log In"} />
           </form>
         ) : (
-          <form>
+          <form onSubmit={onLogin}>
             <Input placeholder={"First name"} {...firstName} />
             <Input placeholder={"Last name"} {...lastName} />
             <Input placeholder={"Email"} {...email} type="email" />
             <Input placeholder={"Username"} {...username} />
-            <Input placeholder={"Password"} {...password} type="password" />
             <Button text={"Sign Up"} />
           </form>
         )}
