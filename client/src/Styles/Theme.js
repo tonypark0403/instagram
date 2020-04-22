@@ -10,8 +10,8 @@ export default {
   darkBlueColor: "#003569",
   boxBorder: "1px solid #E6E6E6",
   borderRadius: "4px",
-  whiteBox: `${Constants.BOX_BORDER};
-             ${Constants.BORDER_RADIUS};
+  whiteBox: `border: ${Constants.BOX_BORDER};
+             border-radius: ${Constants.BORDER_RADIUS};
              background-color: white;
             `,
 };
