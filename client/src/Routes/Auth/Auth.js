@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import useInput from "../../Hooks/useInput";
 import AuthPresenter from "./AuthPresenter";
 import Constants from "../../Common/Constants";
-import { LOG_IN } from "./AuthQueries";
+import { LOG_IN, CREATE_ACCOUNT } from "./AuthQueries";
 
 export default () => {
   const [action, setAction] = useState(Constants.LOGIN);
@@ -18,8 +18,6 @@ export default () => {
     update: (_, { data }) => {
       const { requestSecret } = data;
       if (!requestSecret) {
-        // toast.error("Please sign up first...");
-        // setTimeout(() => setAction(Constants.SIGNUP), 3000);
         toast.error("Please sign up first...", {
           onClose: () => setAction(Constants.SIGNUP),
           autoClose: 3000,
@@ -28,11 +26,41 @@ export default () => {
     },
     variables: { email: email.value },
   });
+
+  const [createAccount] = useMutation(CREATE_ACCOUNT, {
+    update: (_, { data }) => {
+      const { requestSecret } = data;
+      if (!requestSecret) {
+        toast.info("Created account successfully...");
+      }
+    },
+    variables: {
+      email: email.value,
+      username: username.value,
+      firstName: firstName.value,
+      lastName: lastName.value,
+    },
+  });
   // console.log(username, firstName, lastName, email);
-  const onLogin = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    if (email.value !== "") {
-      requestSecret();
+    if (action === Constants.LOGIN) {
+      if (email.value !== "") {
+        requestSecret();
+      } else {
+        toast.error("Email is required");
+      }
+    } else if (action === Constants.SIGNUP) {
+      if (
+        email.value !== "" &&
+        username.value !== "" &&
+        firstName.value !== "" &&
+        lastName.value !== ""
+      ) {
+        createAccount();
+      } else {
+        toast.error("All fields are requred");
+      }
     }
   };
   return (
@@ -43,7 +71,7 @@ export default () => {
       firstName={firstName}
       lastName={lastName}
       email={email}
-      onLogin={onLogin}
+      onSubmit={onSubmit}
     />
   );
 };

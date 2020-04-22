@@ -54,18 +54,18 @@ export default ({
   firstName,
   lastName,
   email,
-  onLogin,
+  onSubmit,
 }) => {
   return (
     <Wrapper>
       <Form>
         {action === Constants.LOGIN ? (
-          <form onSubmit={onLogin}>
+          <form onSubmit={onSubmit}>
             <Input placeholder={"Email"} {...email} type="email" />
             <Button text={"Log In"} />
           </form>
         ) : (
-          <form onSubmit={onLogin}>
+          <form onSubmit={onSubmit}>
             <Input placeholder={"First name"} {...firstName} />
             <Input placeholder={"Last name"} {...lastName} />
             <Input placeholder={"Email"} {...email} type="email" />
