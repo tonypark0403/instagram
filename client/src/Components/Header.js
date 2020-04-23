@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Input from "./Input";
 import useInput from "../Hooks/useInput";
-import { Compass, HeartEmpty, User } from "./Icons";
+import { Compass, HeartEmpty, User, Home, Email } from "./Icons";
 
 const Header = styled.header`
   width: 100%;
@@ -17,7 +17,7 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 25px 0px;
+  padding: 12px 0px;
 `;
 
 const HeaderWrapper = styled.div`
@@ -35,7 +35,9 @@ const HeaderColumn = styled.div`
     text-align: left;
   }
   &:last-child {
-    min-width: 200px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 200px;
     margin-left: auto;
     text-align: right;
   }
@@ -59,8 +61,10 @@ const SearchInput = styled(Input)`
 `;
 
 const HeaderLink = styled(Link)`
-  &:not(:last-child) {
-    margin-right: 30px;
+  display: flex;
+  align-items: center;
+  &:hover {
+    opacity: 0.5;
   }
 `;
 
@@ -87,6 +91,12 @@ export default () => {
           </form>
         </HeaderColumn>
         <HeaderColumn>
+          <HeaderLink to="/">
+            <Home />
+          </HeaderLink>
+          <HeaderLink to="#">
+            <Email />
+          </HeaderLink>
           <HeaderLink to="/explore">
             <Compass />
           </HeaderLink>

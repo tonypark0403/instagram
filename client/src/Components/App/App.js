@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import GlobalStyles from "../../Styles/GlobalStyles";
 import Theme from "../../Styles/Theme";
 import { QUERY } from "./AppQuery";
-import Routes from "../Router";
+import Routes from "../Routes";
 import Header from "../Header";
 import Footer from "../Footer";
 
