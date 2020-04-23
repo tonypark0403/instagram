@@ -35,6 +35,7 @@ const HeaderColumn = styled.div`
     text-align: left;
   }
   &:last-child {
+    min-width: 200px;
     margin-left: auto;
     text-align: right;
   }
@@ -47,10 +48,13 @@ const SearchInput = styled(Input)`
   border-radius: 3px;
   height: auto;
   text-align: center;
-  width: 70%;
+  width: 215px;
   &::placeholder {
     opacity: 0.8;
     font-weight: 200;
+  }
+  @media (max-width: 500px) {
+    display: none;
   }
 `;
 

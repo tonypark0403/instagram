@@ -5,13 +5,23 @@ const Footer = styled.footer`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 12px;
+  @media (max-width: 800px) {
+    margin: 0 auto;
+    max-width: 360px;
+    justify-content: center;
+  }
 `;
 
 const List = styled.ul`
   display: flex;
+  @media (max-width: 800px) {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 `;
 
 const ListItem = styled.li`
@@ -32,7 +42,7 @@ export default () => (
   <Footer>
     <List>
       <ListItem>
-        <Link href="#">about us</Link>
+        <Link href="#">about</Link>
       </ListItem>
       <ListItem>
         <Link href="#">support</Link>
