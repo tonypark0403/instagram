@@ -1,6 +1,7 @@
 import Constants from "../Common/Constants";
 
 export default {
+  maxWidth: "935px",
   bgColor: "#FAFAFA",
   blackColor: "#262626",
   darkGreyColor: "#999",
