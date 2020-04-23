@@ -3,7 +3,8 @@ export default {
   BORDER_RADIUS: "4px",
   TOKEN: "token",
   LOGIN: "LogIn",
-  SIGNUP: "Sign Up",
+  SIGNUP: "SignUp",
+  CONFIRM: "Confirm",
   URI: {
     DEFAULT: "http://localhost:4000",
   },

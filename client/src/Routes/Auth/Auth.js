@@ -12,28 +12,19 @@ export default () => {
   const username = useInput("");
   const firstName = useInput("");
   const lastName = useInput("");
-  const email = useInput("test@test.com"); // for test
-  const [requestSecret] = useMutation(LOG_IN, {
-    // update: (_, result) => console.log(result),
-    update: (_, { data }) => {
-      const { requestSecret } = data;
-      if (!requestSecret) {
-        toast.error("Please sign up first...", {
-          onClose: () => setAction(Constants.SIGNUP),
-          autoClose: 3000,
-        });
-      }
-    },
+  const email = useInput("");
+  const secret = useInput("");
+  const [requestSecretMutation] = useMutation(LOG_IN, {
     variables: { email: email.value },
   });
 
-  const [createAccount] = useMutation(CREATE_ACCOUNT, {
-    update: (_, { data }) => {
-      const { requestSecret } = data;
-      if (!requestSecret) {
-        toast.info("Created account successfully...");
-      }
-    },
+  const [createAccountMutation] = useMutation(CREATE_ACCOUNT, {
+    // update: (_, { data }) => {
+    //   const { requestSecret } = data;
+    //   if (!requestSecret) {
+    //     toast.info("Created account successfully...");
+    //   }
+    // },
     variables: {
       email: email.value,
       username: username.value,
@@ -42,11 +33,27 @@ export default () => {
     },
   });
   // console.log(username, firstName, lastName, email);
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (action === Constants.LOGIN) {
       if (email.value !== "") {
-        requestSecret();
+        try {
+          // requestSecret();
+          const {
+            data: { requestSecret },
+          } = await requestSecretMutation();
+          if (!requestSecret) {
+            toast.error("Please sign up first...", {
+              onClose: () => setAction(Constants.SIGNUP),
+              autoClose: 3000,
+            });
+          } else {
+            toast.success("Check your inbox for your login secret!");
+            setAction(Constants.CONFIRM);
+          }
+        } catch (err) {
+          toast.error(err.message);
+        }
       } else {
         toast.error("Email is required");
       }
@@ -57,7 +64,21 @@ export default () => {
         firstName.value !== "" &&
         lastName.value !== ""
       ) {
-        createAccount();
+        try {
+          const {
+            data: { createAccount },
+          } = await createAccountMutation();
+          if (!createAccount) {
+            toast.error("Can't create account!");
+          } else {
+            toast.success("Account created! Log In now", {
+              onClose: () => setAction(Constants.LOGIN),
+              autoClose: 3000,
+            });
+          }
+        } catch (err) {
+          toast.error(err.message);
+        }
       } else {
         toast.error("All fields are requred");
       }
@@ -71,6 +92,7 @@ export default () => {
       firstName={firstName}
       lastName={lastName}
       email={email}
+      secret={secret}
       onSubmit={onSubmit}
     />
   );

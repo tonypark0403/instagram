@@ -54,23 +54,31 @@ export default ({
   firstName,
   lastName,
   email,
+  secret,
   onSubmit,
 }) => {
   return (
     <Wrapper>
       <Form>
-        {action === Constants.LOGIN ? (
+        {action === Constants.LOGIN && (
           <form onSubmit={onSubmit}>
             <Input placeholder={"Email"} {...email} type="email" />
             <Button text={"Log In"} />
           </form>
-        ) : (
+        )}
+        {action === Constants.SIGNUP && (
           <form onSubmit={onSubmit}>
             <Input placeholder={"First name"} {...firstName} />
             <Input placeholder={"Last name"} {...lastName} />
             <Input placeholder={"Email"} {...email} type="email" />
             <Input placeholder={"Username"} {...username} />
             <Button text={"Sign Up"} />
+          </form>
+        )}
+        {action === Constants.CONFIRM && (
+          <form onSubmit={onSubmit}>
+            <Input placeholder="Input your secret" required {...secret} />
+            <Button text="Confirm" />
           </form>
         )}
       </Form>
