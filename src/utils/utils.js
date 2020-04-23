@@ -24,7 +24,7 @@ export const sendSecretMail = (address, secret) => {
     from: "admin@instaclone.com",
     to: address,
     subject: "🔐Login Secret for Instagram with Prisma🔐",
-    html: `Hello! Your login secret is <strong>${secret}</strong>.<br />
+    html: `Hello! Your login secret is <strong>${secret}</strong><br />
         Copy paste on the app/website to log in
       `,
   };

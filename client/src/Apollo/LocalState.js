@@ -9,7 +9,9 @@ export const resolvers = {
     logUserIn: (_, { token }, { cache }) => {
       localStorage.setItem(Constants.TOKEN, token);
       cache.writeData({
-        isLoggedIn: true,
+        data: {
+          isLoggedIn: true,
+        },
       });
       return null;
     },

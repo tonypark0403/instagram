@@ -5,7 +5,12 @@ import { toast } from "react-toastify";
 import useInput from "../../Hooks/useInput";
 import AuthPresenter from "./AuthPresenter";
 import Constants from "../../Common/Constants";
-import { LOG_IN, CREATE_ACCOUNT, CONFIRM_SECRET } from "./AuthQueries";
+import {
+  LOG_IN,
+  CREATE_ACCOUNT,
+  CONFIRM_SECRET,
+  LOCAL_LOG_IN,
+} from "./AuthQueries";
 
 export default () => {
   const [action, setAction] = useState(Constants.LOGIN);
@@ -39,6 +44,9 @@ export default () => {
       secret: secret.value,
     },
   });
+
+  const [localLogInMutation] = useMutation(LOCAL_LOG_IN);
+
   // console.log(username, firstName, lastName, email);
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -93,10 +101,14 @@ export default () => {
       if (secret.value !== "") {
         try {
           const {
-            data: { confirmSecret },
+            data: { confirmSecret: token },
           } = await confirmSecretMutation();
-          console.log(confirmSecret);
-          //TODO: login
+          // console.log(token);
+          if (token !== "" && token !== undefined) {
+            localLogInMutation({ variables: { token } });
+          } else {
+            throw Error();
+          }
         } catch {
           toast.error("Can't confirm secret!");
         }
