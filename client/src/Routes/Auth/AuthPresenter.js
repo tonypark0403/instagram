@@ -82,19 +82,21 @@ export default ({
           </form>
         )}
       </Form>
-      <StateChanger>
-        {action === Constants.LOGIN ? (
-          <>
-            Don't have an account?{" "}
-            <Link onClick={() => setAction(Constants.SIGNUP)}>Sign up</Link>
-          </>
-        ) : (
-          <>
-            Have an account?{" "}
-            <Link onClick={() => setAction(Constants.LOGIN)}>Log in</Link>
-          </>
-        )}
-      </StateChanger>
+      {action !== Constants.CONFIRM && (
+        <StateChanger>
+          {action === Constants.LOGIN ? (
+            <>
+              Don't have an account?{" "}
+              <Link onClick={() => setAction(Constants.SIGNUP)}>Sign up</Link>
+            </>
+          ) : (
+            <>
+              Have an account?{" "}
+              <Link onClick={() => setAction(Constants.LOGIN)}>Log in</Link>
+            </>
+          )}
+        </StateChanger>
+      )}
     </Wrapper>
   );
 };

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import useInput from "../../Hooks/useInput";
 import AuthPresenter from "./AuthPresenter";
 import Constants from "../../Common/Constants";
-import { LOG_IN, CREATE_ACCOUNT } from "./AuthQueries";
+import { LOG_IN, CREATE_ACCOUNT, CONFIRM_SECRET } from "./AuthQueries";
 
 export default () => {
   const [action, setAction] = useState(Constants.LOGIN);
@@ -30,6 +30,13 @@ export default () => {
       username: username.value,
       firstName: firstName.value,
       lastName: lastName.value,
+    },
+  });
+
+  const [confirmSecretMutation] = useMutation(CONFIRM_SECRET, {
+    variables: {
+      email: email.value,
+      secret: secret.value,
     },
   });
   // console.log(username, firstName, lastName, email);
@@ -81,6 +88,18 @@ export default () => {
         }
       } else {
         toast.error("All fields are requred");
+      }
+    } else if (action === Constants.CONFIRM) {
+      if (secret.value !== "") {
+        try {
+          const {
+            data: { confirmSecret },
+          } = await confirmSecretMutation();
+          console.log(confirmSecret);
+          //TODO: login
+        } catch {
+          toast.error("Can't confirm secret!");
+        }
       }
     }
   };
