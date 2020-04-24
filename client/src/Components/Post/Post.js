@@ -18,17 +18,18 @@ const Post = ({
   const [likeCountS, setLikeCount] = useState(likeCount);
   const [currentItem, setCurrentItem] = useState(0);
   const comment = useInput("");
-  const slide = () => {
-    const totalFiles = files.length;
-    if (currentItem === totalFiles - 1) {
-      setTimeout(() => setCurrentItem(0), 3000);
-    } else {
-      setTimeout(() => setCurrentItem(currentItem + 1), 3000);
-    }
-  };
+
   useEffect(() => {
+    const slide = () => {
+      const totalFiles = files.length;
+      if (currentItem === totalFiles - 1) {
+        setTimeout(() => setCurrentItem(0), 3000);
+      } else {
+        setTimeout(() => setCurrentItem(currentItem + 1), 3000);
+      }
+    };
     slide();
-  }, [currentItem]);
+  }, [currentItem, files.length]);
 
   if (!user.avatar) {
     user.avatar =

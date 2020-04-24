@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 
 export default () => {
   const { data, loading } = useQuery(FEED_QUERY);
-  // console.log(data, loading);
+  // console.log("feed:", data, loading);
   if (!loading) {
     console.log(data.seeFeed);
   }
