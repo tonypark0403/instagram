@@ -9,6 +9,7 @@ const Footer = styled.footer`
   text-transform: uppercase;
   font-weight: 600;
   font-size: 12px;
+  margin: 50px 0px;
   @media (max-width: 800px) {
     margin: 0 auto;
     max-width: 360px;

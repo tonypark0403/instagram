@@ -21,6 +21,7 @@ const Header = styled.header`
   justify-content: center;
   align-items: center;
   padding: 12px 0px;
+  z-index: 2;
 `;
 
 const HeaderWrapper = styled.div`
@@ -34,7 +35,6 @@ const HeaderColumn = styled.div`
   width: 33%;
   text-align: center;
   &:first-child {
-    margin-right: auto;
     text-align: left;
   }
   &:last-child {
