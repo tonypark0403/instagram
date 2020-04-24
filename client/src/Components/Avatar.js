@@ -25,7 +25,6 @@ const Container = styled.div`
 `;
 
 const Avatar = ({ size = "sm", url }) => {
-  console.log("url:", url);
   return <Container size={size} url={url} />;
 };
 

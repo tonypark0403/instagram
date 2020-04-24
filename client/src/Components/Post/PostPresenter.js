@@ -29,10 +29,25 @@ const Location = styled.span`
   font-size: 12px;
 `;
 
-const Files = styled.div``;
+const Files = styled.div`
+  position: relative;
+  padding-bottom: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex-shrink: 0;
+`;
 
-const File = styled.img`
+const File = styled.div`
   max-width: 100%;
+  width: 100%;
+  height: 600px;
+  position: absolute;
+  top: 0;
+  background-image: url(${(props) => props.src});
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.5s linear;
 `;
 
 const Button = styled.span`
