@@ -45,8 +45,11 @@ const File = styled.div`
   position: absolute;
   top: 0;
   background-image: url(${(props) => props.src});
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: contain;
   background-position: center;
+  /* background-attachment: scroll; */
+  opacity: ${(props) => (props.showing ? 1 : 0)};
   transition: opacity 0.5s linear;
 `;
 
@@ -95,6 +98,7 @@ export default ({
   likeCount,
   createdAt,
   newComment,
+  currentItem,
 }) => (
   <Post>
     <Header>
@@ -106,7 +110,14 @@ export default ({
     </Header>
     <Files>
       {files &&
-        files.map((file) => <File key={file.id} id={file.id} src={file.url} />)}
+        files.map((file, index) => (
+          <File
+            key={file.id}
+            id={file.id}
+            src={file.url}
+            showing={index === currentItem}
+          />
+        ))}
     </Files>
     <Meta>
       <Buttons>
