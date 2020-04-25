@@ -34,15 +34,19 @@ const Post = ({
   );
 
   useEffect(() => {
+    let timer;
     const slide = () => {
       const totalFiles = files.length;
       if (currentItem === totalFiles - 1) {
-        setTimeout(() => setCurrentItem(0), 3000);
+        timer = setTimeout(() => setCurrentItem(0), 3000);
       } else {
-        setTimeout(() => setCurrentItem(currentItem + 1), 3000);
+        timer = setTimeout(() => setCurrentItem(currentItem + 1), 3000);
       }
     };
     slide();
+    return () => {
+      clearTimeout(timer);
+    };
   }, [currentItem, files.length]);
 
   const toggleLike = () => {
