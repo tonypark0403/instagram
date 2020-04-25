@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { Link, useHistory } from "react-router-dom";
 import { useQuery } from "react-apollo-hooks";
 
-import Input from "../Input";
-import useInput from "../../Hooks/useInput";
-import { Compass, HeartEmpty, User, Home, Email, Logo } from "../Icons";
-import { ME } from "../../Shared/SharedQueries";
+import Input from "./Input";
+import useInput from "../Hooks/useInput";
+import { Compass, HeartEmpty, User, Home, Email, Logo } from "./Icons";
+import { ME } from "../Shared/SharedQueries";
 
 const Header = styled.header`
   width: 100%;

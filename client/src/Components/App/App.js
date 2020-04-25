@@ -9,7 +9,7 @@ import GlobalStyles from "../../Styles/GlobalStyles";
 import Theme from "../../Styles/Theme";
 import { QUERY } from "./AppQueries";
 import Routes from "../Routes";
-import Header from "../Header/Header";
+import Header from "../Header";
 import Footer from "../Footer";
 
 const Wrapper = styled.div`
