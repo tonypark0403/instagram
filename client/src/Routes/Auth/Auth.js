@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 import useInput from "../../Hooks/useInput";
 import AuthPresenter from "./AuthPresenter";
-import Constants from "../../Common/Constants";
+import Constants from "../../Shared/Constants";
 import {
   LOG_IN,
   CREATE_ACCOUNT,

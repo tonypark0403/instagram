@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Constants from "../../Common/Constants";
+import Constants from "../../Shared/Constants";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
 import ReactHelmet from "../../Components/ReactHelmet";

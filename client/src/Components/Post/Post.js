@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
+
 import useInput from "../../Hooks/useInput";
 import PostPresenter from "./PostPresenter";
 import { useMutation } from "react-apollo-hooks";
@@ -19,13 +21,17 @@ const Post = ({
   const [isLikedS, setIsLiked] = useState(isLiked);
   const [likeCountS, setLikeCount] = useState(likeCount);
   const [currentItem, setCurrentItem] = useState(0);
-  const comment = useInput(""); // {value, onChange}
+  const [selfComments, setSelfComments] = useState([]);
+  const comment = useInput(""); // {value, onChange, setValue}
   const [toggleLikeMutation] = useMutation(TOGGLE_LIKE, {
     variables: { postId: id },
   });
-  const [addCommentMutation] = useMutation(ADD_COMMENT, {
-    variables: { postId: id, text: comment.value },
-  });
+  const [addCommentMutation, { loading: loadingComment }] = useMutation(
+    ADD_COMMENT,
+    {
+      variables: { postId: id, text: comment.value },
+    }
+  );
 
   useEffect(() => {
     const slide = () => {
@@ -51,6 +57,27 @@ const Post = ({
     }
   };
 
+  const onKey = async (e) => {
+    const { which } = e;
+    if (which == 13) {
+      e.preventDefault();
+      try {
+        if (!loadingComment && comment.value) {
+          const {
+            data: { addComment },
+          } = await addCommentMutation();
+          console.log("comment:", addComment);
+          setSelfComments([...selfComments, addComment]);
+          comment.setValue("");
+        } else {
+          // Spinner or Loading 화면
+        }
+      } catch {
+        toast.error("Can't send comment");
+      }
+    }
+  };
+
   if (!user.avatar) {
     user.avatar =
       "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y";
@@ -70,6 +97,8 @@ const Post = ({
       setLikeCount={setLikeCount}
       currentItem={currentItem}
       toggleLike={toggleLike}
+      onKey={onKey}
+      selfComments={selfComments}
     />
   );
 };

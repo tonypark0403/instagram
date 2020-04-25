@@ -6,7 +6,7 @@ import { useQuery } from "react-apollo-hooks";
 import Input from "../Input";
 import useInput from "../../Hooks/useInput";
 import { Compass, HeartEmpty, User, Home, Email, Logo } from "../Icons";
-import { ME } from "./HeaderQuery";
+import { ME } from "../../Shared/SharedQueries";
 
 const Header = styled.header`
   width: 100%;
@@ -92,7 +92,11 @@ export default () => {
         </HeaderColumn>
         <HeaderColumn>
           <form onSubmit={onSearchSubmit}>
-            <SearchInput {...search} placeholder="Search" />
+            <SearchInput
+              value={search.value}
+              onChange={search.onChange}
+              placeholder="Search"
+            />
           </form>
         </HeaderColumn>
         <HeaderColumn>

@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import GlobalStyles from "../../Styles/GlobalStyles";
 import Theme from "../../Styles/Theme";
-import { QUERY } from "./AppQuery";
+import { QUERY } from "./AppQueries";
 import Routes from "../Routes";
 import Header from "../Header/Header";
 import Footer from "../Footer";
