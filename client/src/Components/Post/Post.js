@@ -59,7 +59,7 @@ const Post = ({
 
   const onKey = async (e) => {
     const { which } = e;
-    if (which == 13) {
+    if (which === 13) {
       e.preventDefault();
       try {
         if (!loadingComment && comment.value) {
@@ -70,7 +70,7 @@ const Post = ({
           setSelfComments([...selfComments, addComment]);
           comment.setValue("");
         } else {
-          // Spinner or Loading 화면
+          // Spinner or Loading
         }
       } catch {
         toast.error("Can't send comment");
@@ -78,10 +78,6 @@ const Post = ({
     }
   };
 
-  if (!user.avatar) {
-    user.avatar =
-      "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y";
-  }
   return (
     <PostPresenter
       user={user}

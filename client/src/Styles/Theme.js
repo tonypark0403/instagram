@@ -1,4 +1,4 @@
-import Constants from "../Common/Constants";
+import Constants from "../Shared/Constants";
 
 export default {
   maxWidth: "935px",

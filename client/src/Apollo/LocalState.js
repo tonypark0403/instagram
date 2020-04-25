@@ -1,4 +1,4 @@
-import Constants from "../Common/Constants";
+import Constants from "../Shared/Constants";
 
 export const defaults = {
   isLoggedIn: Boolean(localStorage.getItem(Constants.TOKEN)),

@@ -1,5 +1,5 @@
 import ApolloClient from "apollo-boost";
-import Constants from "../Common/Constants";
+import Constants from "../Shared/Constants";
 import { defaults, resolvers } from "./LocalState.js";
 
 export default new ApolloClient({
