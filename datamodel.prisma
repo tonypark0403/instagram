@@ -1,6 +1,6 @@
 type User {
   id: ID! @id
-  avatar: String
+  avatar: String @default(value: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y")
   username: String! @unique
   email: String! @unique
   firstName: String @default(value: "")
