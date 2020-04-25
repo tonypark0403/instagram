@@ -79,10 +79,3 @@ type Message {
   createdAt: String
   updatedAt: String
 }
-
-type UserProfile {
-  user: User!
-  posts: [Post!]!
-  createdAt: String
-  updatedAt: String
-}
