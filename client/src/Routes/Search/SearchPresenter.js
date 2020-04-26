@@ -21,9 +21,9 @@ const Section = styled.div`
 `;
 
 const PostSection = styled(Section)`
-  grid-template-columns: repeat(4, 200px);
-  grid-template-rows: 200px;
-  grid-auto-rows: 200px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(auto, 292px);
+  grid-auto-rows: minmax(auto, 292px);
 `;
 
 const SearchPresenter = ({ searchTerm, loading, data }) => {
