@@ -1,6 +1,6 @@
 import React from "react";
-import { useQuery } from "react-apollo-hooks";
-import { GET_USER } from "./ProfileQueries";
+import { useQuery, useMutation } from "react-apollo-hooks";
+import { GET_USER, LOG_OUT } from "./ProfileQueries";
 import ProfilePresenter from "./ProfilePresenter";
 
 export default ({
@@ -9,5 +9,6 @@ export default ({
   },
 }) => {
   const { data, loading } = useQuery(GET_USER, { variables: { username } });
-  return <ProfilePresenter loading={loading} data={data} />;
+  const [logOut] = useMutation(LOG_OUT);
+  return <ProfilePresenter loading={loading} logOut={logOut} data={data} />;
 };

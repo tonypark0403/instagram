@@ -18,7 +18,7 @@ export const resolvers = {
     logUserOut: (_, __, { cache }) => {
       localStorage.removeItem(Constants.TOKEN);
       // to remove cache...
-      window.location.reload();
+      window.location = "/";
       return null;
     },
   },
